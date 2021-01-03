@@ -1,0 +1,38 @@
+<div class="col-md-6 offset-md-3 card">
+  <div class="card-body">
+    <div>
+      <table class='table table-bordered'>
+        <tbody>
+          <tr>
+            <td><strong>Search Phrase</strong></td>
+            <td>{{searchPhrase}}</td>
+          </tr>
+          <tr>
+            <td><strong>Website Name</strong></td>
+            <td>{{websiteName}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div>
+      <table class='table table-bordered' aria-labelledby="tableLabel" *ngIf="searchResultList">
+        <thead>
+          <tr>
+            <th>Search Providers</th>
+            <th>Rank</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let searchResult of searchResultList">
+            <td>{{ searchResult.searchProvider }}</td>
+            <td>{{ searchResult.rank }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div>
+      <button class="btn btn-primary btn-space" (click)="onClick()">Start Again</button>
+    </div>
+  </div>
+    </div>
+
