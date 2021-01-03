@@ -7,7 +7,8 @@
 ▪ Scrape the website. Don't use 3rd party libraries or google API, we want to see how you structure your logic
 ▪ In the UI, you need to allow user to enter the search phrase and URL
 ▪ If you need to use any Database, please make sure to use SQL Express
-Tips:
+
+**Tips:**
 ▪ Demonstrate OO Programming & clean separation of concern
 ▪ If you have used JS frameworks before and want go an extra mile in demonstrating your skills(eg,Vue.js,Angular,React,Typescript), feel free to use it in this project.
 ▪ If you have some extra time, feel free to add extra features, eg:
