@@ -40,7 +40,11 @@ export class SearchComponent implements OnInit {
             }
           });
 
-      }, err => this.errorMessage = "Something went wrong - Please try later!"
+      }, err => 
+      {
+        this.errorMessage = "Something went wrong - Please try later!";
+        this.searching = false;
+      }
       )
   }
 

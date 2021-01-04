@@ -9,26 +9,27 @@ import { FormGroup, FormControl } from '@angular/forms';
   styleUrls: ['./search-trend.component.css']
 })
 export class SearchTrendComponent implements OnInit {
-
-  
     
    public searchResultList: SearchHistoryResult[] = [];
-
+   public loading: boolean = true;
    errorMessage: string = "";
    rankData = [];
-   public loading: boolean = true;
    title: string = "";
    type: string="";
    data = [];
    columnNames = [];
-
+   url: string = "";
+   top: number = 30;
 
 
   constructor(private dataService: DataService) { }
 
   ngOnInit() {
 
-   this.dataService.searchHistory(30)
+   this.url = "www.infotrack.co.uk";
+   this.top = 30
+
+   this.dataService.searchHistory(this.url, this.top)
    .subscribe(result => {
 
       result. forEach(e => {
@@ -48,25 +49,12 @@ export class SearchTrendComponent implements OnInit {
             this.searchResultList.push(result);
       });
   }
-
    , err => this.errorMessage = "Something went wrong - Please try later!"
-   );
-    
-   
- 
-
+   ); 
       
-      this.setChartProperties();
-
+      this.title = "Search trend for '" + this.url  + "'" + " (Daily)";
+      this.type = 'LineChart';
       this.loading = false;
-
- }
-
- setChartProperties(){
-   this.title = 'Average Temperatures of Cities';
-   this.type = 'LineChart';
-   //this.data = this.searchResultList[0].data;
-  
  }
 
   options = {   
@@ -79,7 +67,6 @@ export class SearchTrendComponent implements OnInit {
         direction: '-1'
      },
   };
-  width = 800;
-  height = 400;
-
+  width = 600;
+  height = 300;
 }

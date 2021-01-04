@@ -1,26 +1,29 @@
 <div *ngIf="loading" class="d-flex justify-content-center p-3">
-   <mat-spinner [diameter]="40"></mat-spinner>
- </div>
-
- <div  *ngIf="!loading" class="justify-content-center p-3"> 
-  
-   <div *ngFor="let s of searchResultList" >
-      
-      <div class="p-3">
-         <mat-card>
-      <google-chart #chart
-         [title]="title"
-         [type]="type"
-         [data]="s.data"
-         [columns]="s.columns"
-         [options]="options"
-         [width]="width"
-         [height]="height">
-      </google-chart>
-   </mat-card>
-      </div>
-   
-   </div>
-
+  <mat-spinner [diameter]="40"></mat-spinner>
 </div>
+
+
+<div *ngIf="!loading" class="justify-content-center p-3">
+  <h4>{{title}}</h4>
+  <div *ngIf="errorMessage" class="alert alert-warning p-3">{{ errorMessage }}</div>
+  <div *ngFor="let s of searchResultList">
+    <div class="p-3">
+      <div class="col-md-9 card">
+      <div class="card-body">
+        <google-chart #chart
+                      [title]="title"
+                      [type]="type"
+                      [data]="s.data"
+                      [columns]="s.columns"
+                      [options]="options"
+                      [width]="width"
+                      [height]="height">
+        </google-chart>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 

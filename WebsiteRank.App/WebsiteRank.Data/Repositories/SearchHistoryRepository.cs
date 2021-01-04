@@ -55,10 +55,6 @@ namespace WebsiteRank.Data.Repositories
                 
         }
 
-        public Task<bool> UpdateAsync(SearchHistory searchHistory)
-        {
-            throw new NotImplementedException();
-        }
 
         public async Task<IEnumerable<SearchProviderType>> GetSearchProviderTypesAsync()
         {

@@ -5,7 +5,7 @@ namespace WebsiteRank.Web.Models
     public class SearchHistoryResultModel
     {
         public string Provider { get; set; }
-        public IEnumerable<SearchHistoryModel> Data { get; set; }
+        public IList<SearchHistoryModel> Data { get; } = new List<SearchHistoryModel>();
     }
 
 

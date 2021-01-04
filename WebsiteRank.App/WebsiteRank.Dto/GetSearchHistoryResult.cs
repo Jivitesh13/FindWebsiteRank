@@ -6,7 +6,7 @@ namespace WebsiteRank.Dto
     {
         public string Provider { get; set; }
 
-        public List<SearchHistoryResult> Data { get; } = new List<SearchHistoryResult>();
+        public IList<SearchHistoryResult> Data { get; } = new List<SearchHistoryResult>();
     }
 
     public class SearchHistoryResult

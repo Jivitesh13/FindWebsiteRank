@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using AutoMapper;
+﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using WebsiteRank.Dto;
 using WebsiteRank.SearchService.Interface;
 using WebsiteRank.Web.Models;
@@ -29,8 +27,13 @@ namespace WebsiteRank.Web.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<IEnumerable<SearchResultModel>>> Post([FromBody]SearchRequestModel searchRequestModel)
+        public async Task<IActionResult> Post([FromBody]SearchRequestModel searchRequestModel)
         {
+            if (searchRequestModel == null)
+            {
+                return BadRequest();
+            }
+
             var result = await _searchService.SearchAsync(new SearchRequest
             {
                 SearchPhrase = searchRequestModel.SearchPhrase,
@@ -43,14 +46,13 @@ namespace WebsiteRank.Web.Controllers
         }
 
         [HttpGet]
-        [Route("history/{top}")]
-        public async Task<ActionResult<IEnumerable<SearchHistoryResultModel>>> GetHistory(int top)
+        [Route("history/{url}/{top}")]
+        public async Task<IActionResult> GetHistory(string url, int top)
         {
             var result = await _searchService.GetSearchHistoryAsync(new GetSearchHistoryRequest
             {
-               SearchPhrase = "www.infotrack.co.uk",
+               Url = url,
                Top = top
-
             });
 
             var response = _mapper.Map<List<GetSearchHistoryResult>>(result);

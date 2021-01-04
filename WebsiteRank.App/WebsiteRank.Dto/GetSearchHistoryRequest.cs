@@ -2,7 +2,7 @@
 {
     public class GetSearchHistoryRequest
     {
-        public string SearchPhrase { get; set; }
+        public string Url { get; set; }
         public int Top { get; set; }
     }
 }

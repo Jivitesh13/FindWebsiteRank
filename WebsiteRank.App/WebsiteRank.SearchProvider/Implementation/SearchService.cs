@@ -26,8 +26,13 @@ namespace WebsiteRank.SearchService.Implementation
             _searchHistoryRepository = searchHistoryRepository;
         }
 
+        /// <summary>
+        /// Perfomrs web search
+        /// </summary>
+        /// <param name="searchRequest"></param>
+        /// <returns></returns>
         public async Task<IEnumerable<SearchResult>> SearchAsync(SearchRequest searchRequest)
-        {
+        {  
             var searchResultList = new List<SearchResult>();
 
             var providers = await _searchHistoryRepository.GetSearchProviderTypesAsync();
@@ -75,20 +80,30 @@ namespace WebsiteRank.SearchService.Implementation
             return searchResultList;
         }
 
+        /// <summary>
+        /// Retrieves search history
+        /// </summary>
+        /// <param name="getSearchHistoryRequest"></param>
+        /// <returns></returns>
         public async Task<IEnumerable<GetSearchHistoryResult>> GetSearchHistoryAsync(GetSearchHistoryRequest getSearchHistoryRequest)
         {
             var getSearchHistoryResultList = new List<GetSearchHistoryResult>();
 
+            // get search history from DB
             var searchHistory = await _searchHistoryRepository.GetAsync();
 
+            // get list of providers
             var providers = await _searchHistoryRepository.GetSearchProviderTypesAsync();
 
             foreach (var provider in providers)
             {
+                // filter search history
                 var searchHistoryForProvider = searchHistory.ToList()
-                    .Where(s => s.SearchProviderType.Id == provider.Id)
+                    .Where(s => s.SearchProviderType.Id == provider.Id
+                            && s.UrlToSearchInResult.Contains(getSearchHistoryRequest.Url))
                     .OrderByDescending(s => s.LastModifiedOn)
                     .Take(getSearchHistoryRequest.Top)
+                    .OrderBy(s => s.LastModifiedOn)
                     .ToList();
 
                 if (searchHistoryForProvider != null && searchHistoryForProvider.Count > 0)

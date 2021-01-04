@@ -10,9 +10,9 @@ namespace WebsiteRank.Web.Mappings
         {
             CreateMap<SearchResult, SearchResultModel>();
 
-            CreateMap<SearchHistoryModel, SearchHistoryResult>();
+            CreateMap<SearchHistoryResult, SearchHistoryModel>();
 
-            CreateMap<SearchHistoryResultModel, GetSearchHistoryResult>();
+            CreateMap<GetSearchHistoryResult, SearchHistoryResultModel>();
         }
     }
 }

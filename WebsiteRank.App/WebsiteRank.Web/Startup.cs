@@ -40,6 +40,7 @@ namespace WebsiteRank.Web
             
             services.AddAutoMapper(typeof(Startup));
 
+            // Service registration
             services.AddScoped<IProviderService, GoogleService>();
             services.AddScoped<IProviderService, BingService>();
             services.AddScoped<ISearchService, WebSearchService>();

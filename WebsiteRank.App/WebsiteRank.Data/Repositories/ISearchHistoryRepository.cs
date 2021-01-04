@@ -11,7 +11,6 @@ namespace WebsiteRank.Data.Repositories
         Task<bool> CreateAsync(SearchHistory user);
         Task<IEnumerable<SearchHistory>> GetAsync();
         Task<SearchHistory> GetByDayAndProviderTypeAsync(DateTime dateTime, SearchProviderType searchProviderType);
-        Task<bool> UpdateAsync(SearchHistory searchHistory);
         Task<IEnumerable<SearchProviderType>> GetSearchProviderTypesAsync();
     }
 }

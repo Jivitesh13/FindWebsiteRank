@@ -14,7 +14,7 @@ export class DataService{
         return this.http.post<SearchResult[]>("/api/search", searchRequest);     
     }
 
-     searchHistory(top: number) : Observable<SearchHistoryResult[]> {
-         return this.http.get<SearchHistoryResult[]>("/api/search/history/" + top);
+     searchHistory(searchPhrase: string,  top: number) : Observable<SearchHistoryResult[]> {
+         return this.http.get<SearchHistoryResult[]>("/api/search/history/" + searchPhrase + "/" + top);
      };
 }
