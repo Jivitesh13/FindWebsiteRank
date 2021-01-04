@@ -22,11 +22,11 @@ Visual Studio 2019 Visual Studio Code SQL Express .net core 3.1 Angular 8
 
 **Project Structure**
 
-Folder /CodingTest.WebApp contains solution and project files.
+Folder /WebsiteRank.App contains solution and project files.
 
 There are four projects in the solution.
 
-1.  WebsiteRank.Data - Contains EF core db context to interact with SQL server DB and repository class for the user entity
+1. WebsiteRank.Data - Contains EF core db context to interact with SQL server DB and repository class for the user entity
 2. WebsiteRank.Domain - Domain entities for EF
 3. WebsiteRank.SearchService - Service for the business logic
 4. WebsiteRank.Dto - Contains Dtos to transform objects between search service and repository.
