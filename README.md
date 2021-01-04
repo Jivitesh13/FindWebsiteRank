@@ -67,13 +67,16 @@ There are four projects in the solution.
 There are two navigation menu options
 1. Search - allows user to search and show result
 2. Search trend - shows graphical history of most resent 30 searches
+(Run SQL file FindWebsiteRank/MockSearchData.sql on database to add some mock data to view detail Line Chart)
 
 There are currently two search providers configured.
 1. Google 
 2. Bing - not implemented and returns random result.
 
 
+**How to add new search provider?**
 
-**How to use the application?**
+1. Add new recored in databse table -> [WebsiteRankDB].[dbo].[SearchProviderType] 
+2. Add new enum in WebsiteRank.SearchProvider.ProviderType
+3. Add new implementation class in WebsiteRank.SearchProvider.Implementation
 
-2. Search
